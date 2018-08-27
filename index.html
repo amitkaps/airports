@@ -59,7 +59,7 @@ async function drawvis(){
   const g = svg.append("g")
 
   g.selectAll("rect")
-    .data(indData)
+    .data(indiaData)
   .enter()
     .append("rect")
     .attr("x", d => x(d.city))
