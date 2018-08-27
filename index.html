@@ -42,13 +42,13 @@ async function drawvis(){
 
   y = d3.scaleLinear()
               .rangeRound([height, 0])
-              .domain([0, d3.max(indData, d => d.altitude)])
+              .domain([0, d3.max(indiaData, d => d.altitude)])
 
 
   x = d3.scaleBand()
                 .rangeRound([0, width])
                 .padding(0.1)
-                .domain(indData.map( d => d.city ))
+                .domain(indiaData.map( d => d.city ))
 
 
   const svg = d3.select("#vis")
