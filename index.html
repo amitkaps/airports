@@ -24,6 +24,8 @@ var vis = d3.select("#vis");
 var bar = vis.selectAll("div")
     .data(dataset);
 
+console.log(bar);
+
 bar.enter().append("div")
   .style("height", 25 + "px")
   .style("margin", 2 + "px")
