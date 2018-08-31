@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="/d3.js"></script>
+<style> body{margin: 10px;}</style>
+
+<h1> Transitions </h1>
+<div id="vis"></div>
+
+
+<script>
+
+  const data1 = [2, 3, 5, 4]
+  const data2 = [5, 2, 3]
+  let data = data2
+
+  const svg = d3.select("#vis").append("svg")
+                .attr("width", 900)
+                .attr("height", 100)
+
+  function updateVis(data) {
+    
+    // Data Joins
+    const circles = svg.selectAll("circle")
+                  .data(data, d => d)
+    // Exit
+    circles.exit()
+      .transition()
+      .attr("cy", 0 )
+      .remove()
+
+    // Enter + Update
+    circles.enter().append("circle")
+      .attr("cy", 50 )
+    .merge(circles)
+      .attr("cx", (d,i) => (i * 100 + 50))
+      .attr("r", 0)
+      .transition()
+      .attr("r", d => d * 5)
+    
+    console.log(circles)
+  }
+
+  updateVis(data)
+
+  // Change the data every 0.5 seconds
+  d3.interval(function() {
+    if (data === data1) {data = data2} else {data = data1}
+    updateVis(data)
+  }, 2500);
+
+</script>

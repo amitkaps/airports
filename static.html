@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="/d3.js"></script>
+<style> body{margin: 10px;}</style>
+
+<h1> Static </h1>
+<div id="vis"></div>
+
+<script>
+
+  data1 = [2, 3, 5, 4]
+  data2 = [5, 2, 3]
+
+  const svg = d3.select("#vis").append("svg")
+                .attr("width", 600)
+                .attr("height", 100)
+
+  const circles = svg.selectAll("circle")
+                  .data(data1)
+  
+  circles.enter().append("circle")
+      .attr("cx", (d,i) => (i*100 + 50))
+      .attr("cy", 50 )
+      .attr("r", d => d * 5 )
+
+</script>
